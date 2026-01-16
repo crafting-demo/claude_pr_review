@@ -1,6 +1,11 @@
 hooks:
   post-checkout:
-    cmd: cd gh-watcher && npm install
+    cmd: |
+      if ! command -v npm >/dev/null 2>&1; then
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+      fi
+      cd gh-watcher && npm install
 jobs:
   gh-poll:
     run:                      # standard Run-schema block
