@@ -1,0 +1,13 @@
+workspaces:
+  - name: claude
+    checkouts:
+      - path: claude
+        repo:
+          git: https://github.com/crafting-demo/claude-dev-setup.git
+        version_spec: gh-watcher-orchestrator
+        manifest:
+          overlays:
+            - file: dev-worker/.sandbox/manifest.yaml
+    env:
+      - SHELL=/bin/bash
+      - PATH=/usr/local/go/bin:/usr/local/node/bin:$PATH
