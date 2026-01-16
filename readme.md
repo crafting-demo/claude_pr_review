@@ -29,13 +29,13 @@ npm run watch
 
 ## Environment variables (watcher)
 
-- `GITHUB_TOKEN` or `GH_TOKEN` (required)
-- `PROCESS_EXISTING_PRS` (optional)
-- `PR_LABELS` (optional; comma-separated)
-- `CMD_DIR` (optional; default `/home/owner/cmd`)
-- `SANDBOX_DEF_PATH` (optional; default `../claude-code-automation/template.yaml`)
-- `SANDBOX_TEMPLATE_NAME` (optional; use named template instead of local file)
-- `TOOL_WHITELIST_JSON` (optional; JSON array of allowed tools)
+- `GITHUB_TOKEN` or `GH_TOKEN` (required): GitHub token with access to the watched repos.
+- `PROCESS_EXISTING_PRS` (optional, `true|false`): If `true`, process all current open PRs on first run; otherwise only new/updated PRs after the first run.
+- `PR_LABELS` (optional, comma-separated): Only review PRs that have at least one of these labels.
+- `CMD_DIR` (optional; default `/home/owner/cmd`): Where the watcher drops prompt/config files inside the sandbox.
+- `SANDBOX_DEF_PATH` (optional; default `../claude-code-automation/template.yaml`): Local sandbox definition file to use with `cs sandbox create --from def:...`.
+- `SANDBOX_TEMPLATE_NAME` (optional): If set, uses a named Crafting template instead of the local definition file.
+- `TOOL_WHITELIST_JSON` (optional): JSON array of allowed tools for Claude (e.g. `["Bash","Read","Write"]`).
 
 ## Tests
 
