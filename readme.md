@@ -1,4 +1,4 @@
-# GitHub Watcher
+# Claude PR Reviews on Crafting
 
 Minimal GitHub PR watcher that:
 
