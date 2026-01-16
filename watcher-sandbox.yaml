@@ -1,0 +1,13 @@
+workspaces:
+  - name: watcher
+    checkouts:
+      - path: watcher
+        repo:
+          git: https://github.com/crafting-demo/claude_pr_review.git
+        manifest:
+          overlays:
+            - file: .sandbox/manifest.yaml
+    env:
+      - SHELL=/bin/bash
+      # TODO: provide a real token via Crafting secret or env injection
+      - GH_TOKEN=${secret:shared/github-token}

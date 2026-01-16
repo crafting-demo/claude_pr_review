@@ -3,8 +3,8 @@ workspaces:
     checkouts:
       - path: claude
         repo:
-          git: https://github.com/crafting-demo/claude-dev-setup.git
-        version_spec: gh-watcher-orchestrator
+          git: https://github.com/crafting-demo/claude_pr_review.git
+        version_spec: master
         manifest:
           overlays:
             - file: dev-worker/.sandbox/manifest.yaml
