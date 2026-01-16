@@ -15,11 +15,20 @@ Minimal GitHub PR watcher that:
 - `cmd/worker` + `pkg/` — Go worker and shared packages
 - `.sandbox/manifest.yaml` — cron job to run the watcher
 
+## How it works
+
+- **Watcher (`gh-watcher/`)** polls GitHub for new/updated PRs on a schedule and prepares a review prompt.
+- **Sandbox definition (`watcher-sandbox.yaml` + `claude-code-automation/template.yaml`)** defines the watcher sandbox and the worker sandbox used for reviews.
+- **Worker scripts (`dev-worker/`)** install Claude Code and launch the Go worker inside the review sandbox.
+- **Go worker (`cmd/worker` + `pkg/`)** clones the target repo, applies tool permissions, runs Claude with the prompt, and posts a PR comment.
+- **Cron manifest (`.sandbox/manifest.yaml`)** runs `npm run watch` every 5 minutes so the watcher keeps polling.
+
 ## Quick setup
 
-1. Configure `gh-watcher/watchlist.txt` with `owner/repo` lines.
-2. Ensure `GH_TOKEN` (or `GITHUB_TOKEN`) is set.
-3. Run the watcher locally:
+1. Create a sandbox using `watcher-sandbox.yaml` in this repo.
+2. Configure `gh-watcher/watchlist.txt` with `owner/repo` lines.
+3. Ensure `GH_TOKEN` (or `GITHUB_TOKEN`) is set.
+4. Run the watcher locally:
 
 ```bash
 cd gh-watcher
